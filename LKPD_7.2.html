@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Input</title>
+</head>
+<body>
+
+<input type="text" id="masukan" placeholder="Ketik sesuatu..." oninput="tampilkan()">
+
+<p>Hasil live: <span id="output"></span></p>
+
+<script>
+function tampilkan() {
+    const nilai = document.getElementById("masukan").value;
+    document.getElementById("output").textContent = nilai;
+}
+</script>
+
+</body>
+</html>

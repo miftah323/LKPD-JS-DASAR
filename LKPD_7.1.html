@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tombol Sembunyikan</title>
+</head>
+<body>
+<!--Refleksi-->
+<!--Apa perbedaan onclick dan onmouseover? 
+    onclick → dijalankan saat elemen diklik.
+    onmouseover → dijalankan saat mouse melewati (hover) elemen.
+-->
+
+<!--Mengapa event penting untuk interaktivitas? 
+    Memberi respons terhadap tindakan pengguna (klik, ketik, hover, scroll, dll).
+    Mengubah tampilan atau perilaku halaman secara langsung tanpa memuat ulang.
+    Membuat pengalaman lebih dinamis, misalnya form otomatis, menu dropdown, animasi, dan notifikasi.
+    Menghubungkan UI dengan logika program, sehingga halaman tidak hanya statis.
+-->
+    
+<p id="teks">
+    Ini adalah paragraf yang akan disembunyikan ketika tombol diklik.
+</p>
+
+<button onclick="sembunyikan()">Sembunyikan</button>
+
+<script>
+function sembunyikan() {
+    document.getElementById("teks").style.display = "none";
+}
+</script>
+
+</body>
+</html>

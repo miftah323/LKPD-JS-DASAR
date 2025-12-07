@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Nilai Array</title>
+</head>
+<body>
+  <!--Refleksi-->
+  <!-- Apa keuntungan menggunakan array dibanding variabel terpisah?
+      -Menyimpan banyak data dalam satu variabel.
+      -Mudah diolah dengan perulangan.
+      -Lebih rapi dan efisien.-->
+
+  <!--Bagaimana cara menambahkan elemen baru ke array?
+     Cara menambah elemen ke array:
+    -push() → tambah di akhir
+    -unshift() → tambah di awal
+    -array[index] = nilai → tambah di posisi tertentu-->
+  <h1>
+    Menghitung nilai rata rata Array
+  </h1>
+</body>
+<script>
+let nilai = [82, 87, 77, 85, 92];
+let total = 0;
+for (let i = 0; i < nilai.length; i++) {
+  total += nilai[i];
+}
+let rataRata = total / nilai.length;
+document.write("Nilai siswa: " + nilai + "<br>");
+document.write("Rata-rata: " + rataRata);
+</script>
+</html>

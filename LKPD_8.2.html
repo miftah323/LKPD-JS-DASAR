@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Menambahkan Feedback</title>
+</head>
+<body>
+
+<input type="password" id="pwd" placeholder="Masukkan password" oninput="cekPassword()">
+<p id="feedback"></p>
+
+<script>
+function cekPassword() {
+    const pwd = document.getElementById("pwd").value;
+    const feedback = document.getElementById("feedback");
+
+    if (pwd.length < 8) {
+        feedback.innerHTML = "<span style='color:red;'>Password terlalu pendek (min 8 karakter).</span>";
+    } else {
+        feedback.innerHTML = "<span style='color:green;'>Password valid!</span>";
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element</title>
+</head>
+<!--Refleksi-->>
+<!--Apa fungsi document.getElementById()?
+document.getElementById() adalah fungsi JavaScript untuk mencari dan mengambil elemen HTML berdasarkan id-nya supaya elemen itu bisa kita ubah lewat JavaScript.-->
+
+<!--Bagaimana cara menambah elemen baru ke halaman?
+Untuk menambah elemen baru ke halaman:
+
+Pakai document.createElement() untuk membuat elemen.
+
+Isi elemen dengan textContent atau innerHTML.
+
+Tempelkan ke halaman dengan appendChild().
+-->
+<body>
+    <div id="kotak"></div>
+<button onclick="tambahElemen()">Tambah Elemen</button>
+
+</body>
+<script>
+    function tambahElemen() {
+  let elemenBaru = document.createElement("p");
+  elemenBaru.textContent = "Elemen baru ditambahkan!";
+  document.getElementById("kotak").appendChild(elemenBaru);
+}
+</script>
+</html>

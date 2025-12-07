@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Tebak Angka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-top: 10px;
+            border: 2px solid #4facfe;
+            border-radius: 8px;
+        }
+
+        button {
+            margin-top: 12px;
+            padding: 10px 18px;
+            background: #4facfe;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #00a2ff;
+        }
+
+        .info {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .skor {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+  <!--REFLEKSI-->
+  <!--Apa tantangan terbesar dalam membuat project ini
+  1. Membuat logika game yang benar
+Susahnya memastikan responnya tepat—angka terlalu besar, terlalu kecil, atau benar.
+
+
+2. Validasi input
+Tantangannya mencegah input kosong, huruf, atau angka di luar batas.
+
+
+3. Menyimpaj skor pakai localStorage
+Harus paham cara nyimpen, ngambil, dan ngecek data biar nggak error.
+
+
+4. Merapihkan tampilan dengan CSS
+Tantangannya bikin UI yang enak dilihat dan tetap simple.
+
+
+5. Fitur reset tanpa merusak game
+Harus pastiin angka baru, percobaan reset, dan tampilan bersih lagi.-->
+  <!--Fitur apa yang ingin kalian tambahkan jika ada waktu lebih?
+  Saya ingin menambahkan fitur kaya bisa memilih lebih banyak varian tebak angka kaya dari 1-20 atau 1-100 kaya gitu jadi lebih banyak variasi nya,agar lebih menantang dan tidak membosankan-->
+<div class="container">
+    <h2>Tebak Angka 1 - 10</h2>
+
+    <input type="number" id="tebakan" placeholder="Masukkan angka..." />
+
+    <button onclick="cekTebakan()">Tebak!</button>
+    <button onclick="resetGame()">Reset</button>
+
+    <p class="info" id="info"></p>
+    <p class="skor" id="skor">Skor Terbaik: -</p>
+</div>
+
+<script>
+    let angkaBenar = Math.floor(Math.random() * 10) + 1;
+    let percobaan = 0;
+
+    // Tampilkan skor terbaik dari localStorage
+    if (localStorage.getItem("bestScore")) {
+        document.getElementById("skor").innerText = 
+            "Skor Terbaik: " + localStorage.getItem("bestScore");
+    }
+
+    function cekTebakan() {
+        let tebakan = document.getElementById("tebakan").value;
+
+        // VALIDASI
+        if (tebakan === "") {
+            document.getElementById("info").innerText = 
+                "⚠ Masukkan angka dulu bro!";
+            return;
+        }
+
+        tebakan = Number(tebakan);
+
+        if (tebakan < 1 || tebakan > 10) {
+            document.getElementById("info").innerText = 
+                "⚠ Angka harus 1 - 10!";
+            return;
+        }
+
+        percobaan++;
+
+        // COCOK ATAU TIDAK
+        if (tebakan === angkaBenar) {
+            document.getElementById("info").innerText =
+                "🎉 Benar bro! Angkanya: " + angkaBenar + 
+                " (Percobaan: " + percobaan + ")";
+
+            simpanSkor(percobaan);
+        } else if (tebakan > angkaBenar) {
+            document.getElementById("info").innerText = "Turunin dikit bro!";
+        } else {
+            document.getElementById("info").innerText = "Naikin dikit bro!";
+        }
+    }
+
+    function resetGame() {
+        angkaBenar = Math.floor(Math.random() * 10) + 1;
+        percobaan = 0;
+        document.getElementById("info").innerText = "Game direset!";
+        document.getElementById("tebakan").value = "";
+    }
+
+    function simpanSkor(skor) {
+        let skorTerbaik = localStorage.getItem("bestScore");
+
+        if (!skorTerbaik || skor < skorTerbaik) {
+            localStorage.setItem("bestScore", skor);
+            document.getElementById("skor").innerText = 
+                "Skor Terbaik: " + skor;
+        }
+    }
+</script>
+
+</body>
+</html>

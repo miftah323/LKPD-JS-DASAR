@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title>VALIDASI PASSWORD</title>
+</head>
+<body>
+<!--Refleksi-->
+<!--Mengapa validasi penting sebelum data dikirim ke server? 
+    Mencegah kesalahan data — memastikan format dan isi data sudah benar (misalnya email valid, password cukup panjang).
+    Menghemat sumber daya server — data yang salah tidak perlu diproses, sehingga beban server berkurang.
+    Meningkatkan keamanan — mengurangi risiko input berbahaya seperti SQL injection atau script berbahaya.
+    Memberikan pengalaman pengguna yang lebih baik — pengguna langsung tahu jika ada kesalahan tanpa menunggu respons server.
+    Menjaga konsistensi dan kualitas data — data yang masuk ke server sudah memenuhi aturan yang ditetapkan.
+-->
+<!--Apa risiko jika tidak melakukan validasi?
+    Data tidak valid atau rusak masuk ke sistem (misalnya email salah, password terlalu pendek).
+    Keamanan terganggu — input berbahaya dapat masuk (SQL injection, XSS, command injection).
+    Server terbebani karena harus memproses permintaan yang seharusnya ditolak di sisi klien.
+    Bug dan error lebih mudah terjadi karena server menerima data yang tidak sesuai aturan.
+    Pengalaman pengguna buruk — mereka tidak tahu ada kesalahan sampai server menolak, terlambat disadari.
+    Integritas data terganggu — database bisa berisi data yang tidak konsisten atau tidak lengkap.
+    -->
+<input type="password" id="pwd" placeholder="Masukkan password" oninput="cekPassword()">
+<p id="pesan"></p>
+
+<script>
+function cekPassword() {
+    const pwd = document.getElementById("pwd").value;
+    const pesan = document.getElementById("pesan");
+
+    if (pwd.length < 8) {
+        pesan.textContent = "Password harus minimal 8 karakter.";
+        pesan.style.color = "red";
+    } else {
+        pesan.textContent = "Password valid.";
+        pesan.style.color = "green";
+    }
+}
+</script>
+
+</body>
+</html>

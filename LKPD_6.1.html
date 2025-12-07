@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengubah Warna Teks</title>
+</head>
+<body>
+    <h1 id="Teks">Mengubah Warna Teks Saat Klik Tombol</h1>
+    <button onclick="ubahWarna()">Ubah Warna</button>
+</body>
+<script>
+    function ubahWarna(){
+        let teks = document.getElementById("Teks");
+
+        // kalau warnanya biru → balik ke hitam
+        // kalau bukan biru → ubah jadi biru
+        if(teks.style.color === "blue"){
+            teks.style.color = "black"; 
+        } else {
+            teks.style.color = "blue";
+        }
+    }
+</script>
+</html>
